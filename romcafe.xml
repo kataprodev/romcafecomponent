@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.2.0" method="upgrade">
+
+	<name>romcafe</name>
+	<!-- The following elements are optional and free of formatting constraints -->
+	<creationDate>30/08/2019</creationDate>
+	<author>Kata</author>
+	<authorEmail>kataprodev@gmail.com</authorEmail>
+	<authorUrl>http://www.kataprodev.com</authorUrl>
+	<copyright>Copyright Info</copyright>
+	<license>License Info</license>
+	<!--  The version string is recorded in the components table -->
+	<version>1.0.0</version>
+	<!-- The description is optional and defaults to the name -->
+	<description>Ròm Cafe component ...</description>
+
+	<install> <!-- Runs on install -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall> <!-- Runs on uninstall -->
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<update> <!-- Runs on update; New since J2.5 -->
+		<schemas>
+			<schemapath type="mysql">sql/updates/mysql</schemapath>
+		</schemas>
+	</update>
+
+	<!-- Site Main File Copy Section -->
+	<!-- Note the folder attribute: This attribute describes the folder
+		to copy FROM in the package to install therefore files copied
+		in this section are copied from /site/ in the package -->
+	<files folder="site">
+		<filename>index.html</filename>
+		<filename>romcafe.php</filename>
+		<filename>controller.php</filename>
+		<folder>views</folder>
+		<folder>models</folder>
+	</files>
+
+	<administration>
+		<!-- Administration Menu Section -->
+		<menu link='index.php?option=com_romcafe'>Ròm Cafe</menu>
+		<files folder="admin">
+			<!-- Admin Main File Copy Section -->
+			<filename>index.html</filename>
+			<filename>romcafe.php</filename>
+			<filename>controller.php</filename>
+			<folder>sql</folder>
+			<folder>tables</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+		</files>
+	</administration>
+ <updateservers>
+		<server type="extension" name="Nhan Vien Updates">http://kataprodev.com/kataupdate/com_romcafe.xml</server>
+	</updateservers>
+</extension>
